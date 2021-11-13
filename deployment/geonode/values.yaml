@@ -3,3 +3,19 @@ image:
   repository: kartoza/geonode
   tag: "prod--3.2.1--latest"
   pullPolicy: IfNotPresent
+
+postgis:
+  image:
+    registry: docker.io
+    repository: kartoza/postgis
+    tag: "13-3.1"
+    pullPolicy: IfNotPresent
+
+  extraPodEnv: |
+    - name: GEODATABASE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: {{ include "geonode.sharedSecretName" . | quote }}
+          key: {{ .Values.global.geodatabasePassword.valueFrom.secretKeyRef.key }}
+    - name: PASSWORD_AUTHENTICATION
+      value: "md5"
