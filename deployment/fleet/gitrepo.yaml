@@ -1,0 +1,14 @@
+kind: GitRepo
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: usgs-viewer
+  namespace: fleet-default
+spec:
+  repo: https://github.com/lucernae/usgs-viewer
+  branch: main
+  targets:
+    - clusterSelector:
+        matchLabels:
+          lucernae.fleet.cluster/app: usgs-viewer
+  paths:
+    - deployment/geonode

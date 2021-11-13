@@ -1,0 +1,17 @@
+defaultNamespace: usgs-viewer
+helm:
+  chart: geonode
+  repo: https://kartoza.github.io/charts
+  releaseName: geonode
+  version: 0.4.0
+  valuesFiles:
+    - values.yaml
+  valuesFrom:
+    - secretKeyRef:
+        name: geonode-override-secret
+        namespace: usgs-viewer
+        key: values.yaml
+      configMapKeyRef:
+        name: geonode-override-config
+        namespace: usgs-viewer
+        key: values.yaml

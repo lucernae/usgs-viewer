@@ -1,0 +1,5 @@
+---
+image:
+  repository: kartoza/geonode
+  tag: "prod--3.2.1--latest"
+  pullPolicy: IfNotPresent
