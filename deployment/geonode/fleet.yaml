@@ -5,7 +5,7 @@ helm:
   releaseName: geonode
   version: 0.4.0
   valuesFiles:
-    - values.yaml
+    - ./values.yaml
   valuesFrom:
     - secretKeyRef:
         name: geonode-override-secret
